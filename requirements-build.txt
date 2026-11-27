@@ -1,0 +1,4 @@
+# Only needed to build the Windows exe
+-r requirements.txt
+pyinstaller>=6
+pillow  # turns the PNG logo into the exe icon

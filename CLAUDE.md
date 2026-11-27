@@ -13,9 +13,12 @@ Run from the repository root (Python 3.10+, developed on 3.11 and Windows):
 ```bash
 pip install -r requirements.txt   # opencv-python is optional: live preview video only
 python -m theme_builder
+
+pip install -r requirements-build.txt
+python scripts/build_exe.py       # portable Windows exe in dist/
 ```
 
-There is no build step, linter or test suite. Verify changes with throwaway scripts kept outside the repository.
+There is no linter or test suite. Verify changes with throwaway scripts kept outside the repository.
 
 ## Architecture
 
@@ -31,6 +34,7 @@ Data flows one way: sidebar controls → `AppState.update(...)` → a new frozen
 - **Preview and generated page:** `ui/draw_shortcuts.py` repeats the pixel sizes from `builder/templates/*.css` on a 1280×720 design canvas, and `ui/draw_chrome.py` mirrors the color mapping in `builder/manifests.py`. Change both sides together.
 - **Color labels:** the manifest sets `omnibox_background` from the *frame* color, although a sidebar label reads "Active tab & address bar". The README documents this.
 - **Install steps:** `ui/howto.py` (in-app guide) and `README.md` describe the same steps. ZIP and folder names come from `PACKAGE_NAME` / `DEFAULT_ZIP_NAME` in `core/settings.py`.
+- **Bundled files:** the exe only contains non-Python files listed in `DATA` in `scripts/build_exe.py`. Add any new asset or template location there. The version is `theme_builder.__version__`.
 - **Default icon:** `core/assets.DEFAULT_ICON` is both the app icon and the tab icon used when the user picks none.
 
 ## Layout and styling
