@@ -1,0 +1,78 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body, html { width: 100%; height: 100%; overflow: hidden; font-family: system-ui, -apple-system, sans-serif; }
+video { position: fixed; inset: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: 0; background: #000; }
+
+.add-btn {
+  pointer-events: auto;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  width: 100%; padding: 9px 12px; border-radius: 10px;
+  background: rgba(${btn_r}, ${btn_g}, ${btn_b}, ${alpha});
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: ${txt_hex}; font-size: 13px; font-weight: 600; cursor: pointer; flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+.add-btn:hover { background: rgba(${btn_r}, ${btn_g}, ${btn_b}, ${hover_alpha}); }
+
+.shortcut-list {
+  pointer-events: auto; display: flex; flex-direction: column; gap: 7px;
+  overflow-y: auto; padding-right: 2px; max-height: calc(100vh - 80px);
+}
+.shortcut-list::-webkit-scrollbar { width: 4px; }
+.shortcut-list::-webkit-scrollbar-track { background: transparent; }
+.shortcut-list::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.25); border-radius: 999px; }
+
+.site {
+  position: relative; display: flex; align-items: center; gap: 10px;
+  width: 100%; padding: 8px 56px 8px 10px; border-radius: 10px;
+  background: rgba(${btn_r}, ${btn_g}, ${btn_b}, ${alpha});
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: ${txt_hex}; text-decoration: none; flex-shrink: 0;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.site:hover { background: rgba(${btn_r}, ${btn_g}, ${btn_b}, ${hover_alpha}); transform: translateX(-2px); }
+
+.icon-wrap {
+  width: 26px; height: 26px; border-radius: 7px; background: rgba(255, 255, 255, 0.12);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.icon-wrap img { width: 16px; height: 16px; border-radius: 3px; }
+.title { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.action-btns {
+  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  display: flex; gap: 4px; opacity: 0; transition: opacity 0.15s ease;
+}
+.site:hover .action-btns { opacity: 1; }
+.icon-btn {
+  width: 20px; height: 20px; border-radius: 50%; border: none;
+  background: rgba(0, 0, 0, 0.65); color: #fff;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.icon-btn svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.edit-btn:hover { background: #4f8cff; }
+.delete-btn:hover { background: #e53935; }
+
+${placement_css}
+
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.65);
+  display: none; align-items: center; justify-content: center; z-index: 10;
+}
+.modal-backdrop.open { display: flex; }
+.modal {
+  width: 320px; padding: 20px; border-radius: 14px;
+  background: rgba(26, 26, 34, 0.92); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15); color: #fff;
+}
+.modal h3 { margin-bottom: 14px; font-size: 15px; }
+.modal input {
+  width: 100%; padding: 8px 10px; margin-bottom: 10px; border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.08);
+  color: #fff; font-size: 13px; outline: none;
+}
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
+.btn { padding: 7px 14px; border-radius: 8px; border: none; font-size: 12px; cursor: pointer; }
+.btn-cancel { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.btn-save { background: #4f8cff; color: #fff; font-weight: 600; }

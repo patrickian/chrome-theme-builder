@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>New Tab</title>
+  ${icon_link}
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <video autoplay muted loop playsinline src="video.mp4"></video>
+
+  <div class="sidebar-panel">
+    <button type="button" id="add-shortcut-btn" class="add-btn">+ Add Shortcut</button>
+    <div id="shortcuts-list" class="shortcut-list"></div>
+  </div>
+
+  <div id="modal-backdrop" class="modal-backdrop">
+    <form id="shortcut-form" class="modal">
+      <h3 id="modal-title">Add Shortcut</h3>
+      <input type="text" id="site-name" placeholder="Name (e.g., YouTube)" required>
+      <input type="text" id="site-url" placeholder="URL (e.g., youtube.com)" required>
+      <div class="modal-actions">
+        <button type="button" id="cancel-btn" class="btn btn-cancel">Cancel</button>
+        <button type="submit" class="btn btn-save">Save</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

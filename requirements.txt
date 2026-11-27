@@ -1,0 +1,2 @@
+PySide6-Essentials>=6.7
+opencv-python  # optional: plays the video in the live preview
