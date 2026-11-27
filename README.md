@@ -23,6 +23,16 @@ A desktop app that turns any `.mp4` video into your Chrome new tab page, with a 
 |---|---|
 | ![Centered grid](docs/screenshots/center-grid.png) | <img src="docs/screenshots/guide.png" alt="Guide window" width="420"> |
 
+## Windows: run without installing Python
+
+If someone gave you `ChromeThemeBuilder.exe`, you only need that file and Google Chrome.
+
+1. Save `ChromeThemeBuilder.exe` anywhere, for example on your Desktop.
+2. Double-click it. The first window can take a few seconds to appear.
+3. If Windows shows **Windows protected your PC**, click **More info**, then **Run anyway**. The warning appears because the app is not code-signed. Only run a copy from someone you trust.
+
+Then continue with [How to use](#how-to-use). The rest of this section and **Installation** are for running or building the app from source.
+
 ## Requirements
 
 - Python 3.10 or newer (developed on Python 3.11, Windows 11)
@@ -126,6 +136,19 @@ Remove **My Video Tab** on the extensions page (this also deletes its shortcuts)
 | No video in the live preview | Install `opencv-python`: `pip install opencv-python` |
 | The startup guide is gone | Click **Guide/Manual** and untick **Don't show this guide at startup**. |
 
+## Build the Windows exe
+
+On Windows, from the project folder:
+
+```bash
+pip install -r requirements-build.txt
+python scripts/build_exe.py
+```
+
+The result is `dist/ChromeThemeBuilder.exe`, a single portable file that includes Python, Qt and OpenCV. Share it as it is; there is nothing to install. The version number comes from `theme_builder/__init__.py`.
+
+If you share the exe publicly, follow the license terms of the bundled libraries, including the LGPL for Qt/PySide6 and the FFmpeg library inside OpenCV.
+
 ## Project structure
 
 ```text
@@ -136,6 +159,7 @@ theme_builder/
 ├── ui/           sidebar, live preview and guide window
 ├── builder/      creates the ZIP (web page templates in builder/templates/)
 └── assets/       icons and logos
+scripts/          builds the Windows exe
 ```
 
 ## Credits and disclaimer
