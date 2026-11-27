@@ -1,0 +1,3 @@
+/* Keep the Add button at the bottom and fill the list upward. */
+.sidebar-panel { flex-direction: column-reverse; }
+.shortcut-list { flex-direction: column-reverse; }
